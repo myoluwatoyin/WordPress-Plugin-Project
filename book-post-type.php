@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Book Post Type
- * Description: A custom post type plugin for Books with a custom meta box and taxonomy created for fatbeehive
+ * Description: A custom post type plugin for Books with a custom meta box and taxonomy created for FATBEEHIVE
  * Version: 1.0
  * Author: Emmanuel Boluwatife
  */
@@ -96,7 +96,7 @@ public function display_author_name($content) {
     }
     return $content;
 }   
-    
+
 }
 
 new BookPostType();
