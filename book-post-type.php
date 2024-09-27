@@ -41,9 +41,27 @@ class BookPostType {
             'labels' => [
                 'name' => 'Genres',
                 'singular_name' => 'Genre',
+                'search_items' => 'Search Genres',
+                'popular_items' => 'Popular Genres',
+                'all_items' => 'All Genres',
+                'edit_item' => 'Edit Genre',
+                'update_item' => 'Update Genre',
+                'add_new_item' => 'Add New Genre',
+                'new_item_name' => 'New Genre Name',
+                'separate_items_with_commas' => 'Separate genres with commas',
+                'add_or_remove_items' => 'Add or remove genres',
+                'choose_from_most_used' => 'Choose from the most used genres',
+                'not_found' => 'No genres found.',
+                'menu_name' => 'Genres',
+
             ],
             'public' => true,
             'hierarchical' => false,  // Make it non-hierarchical, like tags
+            'show_ui' => true,
+            'show_admin_column' => true, // This shows the genre in the admin column
+            'update_count_callback' => '_update_post_term_count',
+            'query_var' => true,
+            'rewrite' => ['slug' => 'genre'],
         ];
         register_taxonomy('genre', 'book', $args);
     }

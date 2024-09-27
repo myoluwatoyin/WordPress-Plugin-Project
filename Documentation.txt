@@ -18,7 +18,9 @@ Template:
 The archive-book.php file is located in the theme directory. It lists all the books and includes a filter for genre.
 Download the Books Archive Template Page and upload it into your themes directory. That is, wp-content/themes/your-theme.
 
-3. Visit the Books archive page at: http://yoursite.com/book/
+4. Bootstrap Styling has been added to functions.php. Download the functions.php file and replace it with the one in your default theme.
+
+5. Visit the Books archive page at: http://yoursite.com/book/
 
 
 

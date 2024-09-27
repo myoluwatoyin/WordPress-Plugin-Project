@@ -3,10 +3,14 @@
 get_header();
 ?>
 
-<div class="book-archive">
-    <h1>Books Archive</h1>
+<div id="primary" class="content-area">
+    <main id="main" class="site-main container mt-5">
 
-    <?php
+    <!-- Heading "Books"  -->
+        <header class="page-header mb-4">
+            <h1 class="page-title text-center">Books</h1>
+
+            <?php
     // Get all terms (genres) for the 'genre' taxonomy
     $genres = get_terms([
         'taxonomy' => 'genre',
@@ -16,7 +20,7 @@ get_header();
     // If there are genres available, create a filter dropdown
     if ($genres && !is_wp_error($genres)) {
         echo '<form method="GET">';
-        echo '<select name="genre_filter" onchange="this.form.submit()">';
+        echo '<select name="genre_filter" class="form-control" onchange="this.form.submit()">';
         echo '<option value="">Select Genre</option>';
         
         foreach ($genres as $genre) {
@@ -48,32 +52,66 @@ get_header();
         // Modify the main query
         query_posts($query_args);
     }
-
-    // Check if there are any books to display
-    if (have_posts()) : ?>
-        <ul>
-        <?php
-        // Loop through all books
-        while (have_posts()) : the_post(); ?>
-            <li>
-                <!-- Book title linked to the single book page -->
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                <p><?php the_excerpt(); ?></p> <!-- Display the book excerpt -->
-            </li>
-        <?php endwhile; ?>
-        </ul>
-
-        <!-- Pagination for book list -->
-        <?php the_posts_pagination(); ?>
-
-    <?php else : ?>
-        <!-- Message if no books are found -->
-        <p>No books found.</p>
-    <?php endif; ?>
+?>
+    
+ 
 </div>
+        </header><!-- .page-header -->
+
+        <?php
+        // Modify the query to filter by genre if a genre is selected
+        if (isset($_GET['genre_filter']) && $_GET['genre_filter']) {
+            $genre = sanitize_text_field($_GET['genre_filter']);
+            $query_args = array(
+                'post_type' => 'book',
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'genre',
+                        'field'    => 'slug',
+                        'terms'    => $genre,
+                    ),
+                ),
+            );
+            $custom_query = new WP_Query($query_args);
+        } else {
+            $custom_query = new WP_Query(array('post_type' => 'book'));
+        }
+
+        // Access the plugin instance to use its methods
+        global $book_post_type;
+        
+
+        if ($custom_query->have_posts()) :
+            echo '<div class="row">'; // Bootstrap Row Styling
+            while ($custom_query->have_posts()) : $custom_query->the_post(); ?>
+        <article id="post-<?php the_ID(); ?>" <?php post_class('col-md-4 mb-4'); ?>>
+            <!-- Bootstrap Card Styling  -->
+        <div class="card h-100"> 
+                <div class="card-body">
+                    <header class="entry-header">
+                        <?php the_title('<h2 class="entry-title h5"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>'); ?>
+                    </header>
+
+                    <div class="entry-content">
+                        <?php the_excerpt(); ?>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <!-- Author Name dispalyed in front end as requested -->
+                    <p class="mb-0">Author:
+                        <?php echo esc_html(get_post_meta(get_the_ID(), '_author_name', true)); ?></p>
+                </div>
+
+            </div>
+        </article>
+        <?php endwhile;
+            echo '</div>';
+        else : ?>
+        <p class="text-center">No books found</p>
+        <?php endif;
+        wp_reset_postdata(); ?>
+    </main><!-- #main -->
+</div><!-- #primary -->
 
 <?php
-// Include the footer
-get_footer();
-?>
-
+get_footer();   
