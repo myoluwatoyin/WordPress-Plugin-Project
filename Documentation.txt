@@ -1,0 +1,28 @@
+WordPress Custom Plugin - Book Post Type
+---
+
+# Documentation for the "Book" Post Type Plugin
+
+## Overview
+This plugin allows you to create and manage a custom post type called "Book" in your WordPress website. It includes a template to display a list of books and allows you to categorize books by genre.
+
+ How to Install the Plugin
+
+1. Download the Plugin Files:
+   Ensure you have the plugin files ready on your computer (the folder containing all the necessary files).
+
+2. Upload the plugin folder into wp-content/plugins/.
+3. Activate the plugin from the WordPress admin dashboard.
+
+Template:
+The archive-book.php file is located in the theme directory. It lists all the books and includes a filter for genre.
+Download the Books Archive Template Page and upload it into your themes directory. That is, wp-content/themes/your-theme.
+
+3. Visit the Books archive page at: http://yoursite.com/book/
+
+
+
+Developer: Emmanuel Boluwatife
+Contact: myoluwatoyin@gmail.com
+
+Created for Fatbeehive
