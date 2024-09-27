@@ -1,0 +1,22 @@
+Subject: Books Archive Only Showing Science Fiction Books
+
+Hi Bob,
+
+Thank you for reaching out! I’m Emmanuel from Fatbeehive, and I am pleased to inform you that I have successfully set up the Books archive page for your website. 
+
+What Was Done:
+
+I created a dedicated page to display all your books. This page will serve as a central location where visitors can easily see the complete list of books available on your site.
+
+To enhance user experience, I added a filtering option that allows visitors to view books by genre. For example, if someone is interested in science fiction, they can now filter the list to see only those books.
+
+The issue you mentioned regarding the archive only showing science fiction books has been addressed. Now, visitors will be able to see all the books you have, and they can filter them by genre as needed.
+
+You can confirm that the archive page is functioning as intended by visiting the Books section of your website. There, you should see the complete list of your books along with the genre filtering options. Simply select the genre you are interested in, and the page will update to show only the relevant titles.
+
+If you have any further questions or need additional adjustments, please feel free to reach out. I'm here to help!
+
+Cheers,  
+Emmanuel  
+Senior WordPress Developer  
+FatBeehive
